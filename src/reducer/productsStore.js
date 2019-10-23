@@ -1,82 +1,75 @@
-import React, { Component } from 'react';
-import { storeProducts, detailProduct } from '../data'
+import React, { Component } from "react";
+import { storeProducts, detailProduct } from "../Data/data";
 
 const istate = {
-    productOfshop: storeProducts,
-    detailProduct: detailProduct,
+    productOfshop: [{}],
+    detailProduct: {},
     cart: []
-}
-
-const getItem = (id) => {
-    const product = istate.productOfshop.find(item => item.id == id);
-    return product;
-}
-
-const handleDetail = (id,state) => {
-    const product = getItem(id);
-    return {...state, detailProduct: product }
 };
 
-const findindex=(id)=> {
-    const obj = istate.productOfshop;
-    for (let i = 0; i <= obj.length; i++) {
-        if (obj[i].id == id) {
-            return i
+const getItem = (id, state) => {
+    console.log("in fuvtion", istate);
+    const product = state.productOfshop.find(item => item.product_id == id);
+    return product;
+};
+
+const handleDetail = (id, state) => {
+    const product = getItem(id, state);
+    return {...state, detailProduct: product };
+};
+
+const findindex = (id, state) => {
+    const obj = state.productOfshop;
+    console.log("my obj",obj);
+    for (let i = 0; i < obj.length; i++) {
+        if (obj[i].product_id == id) {
+            return i;
         }
     }
-}
-const addToCart = (id,state) => {
-    const product = getItem(id);
-    let tempProduct = istate.productOfshop;
-    let tempdProduct = istate.detailProduct;
-    const index = findindex(id);
+};
+const addToCart = (id, state) => {
+    const product = getItem(id, state);
+    let tempProduct = state.productOfshop;
+    let tempdProduct = state.detailProduct;
+    const index = findindex(id, state);
     console.log(index);
-    tempProduct[index].inCart = true;
-        return {
-            ...state,
-            cart: [...state.cart, product]
-            
-        }
-
+    return {
+        ...state,
+        cart: [...state.cart, product]
+    };
 };
 
-const deleteFromCart = (id,state) => {
-    const product = getItem(id);
+const deleteFromCart = (id, state) => {
+    const product = getItem(id,state);
+    console.log(id,"newcart");
     let products = state.productOfshop;
-    const index = findindex(id);
-    products[index].inCart = false;
-    const newCart = state.cart.filter(c => c.id != id);
-    return { ...state, 
-             cart: newCart }
-       
-    
-
+    const index = findindex(id,state);
+    const newCart = state.cart.filter(c => c.product_id != id);
+    return {...state, cart: newCart };
 };
-
 
 const product = (state = istate, action) => {
-
     if (action.type == "DETAILS") {
         const id = action.payload;
-        return handleDetail(id,state);
-
+        console.log("isate", state);
+        return handleDetail(id, state);
     }
-    if(action.type == "CART")
-    {
+    if (action.type == "CART") {
         const id = action.payload;
         console.log(id);
-       return addToCart(id,state)
+        return addToCart(id, state);
     }
-    if(action.type == "DELETE")
-    {
+    if (action.type == "DELETE") {
         const id = action.payload;
         console.log(id);
-       return deleteFromCart(id,state)
+        return deleteFromCart(id, state);
     }
-    else {
+    if (action.type == "PRODUCTS") {
+        const obj = action.payload;
+        return {...state, productOfshop: obj.rows };
+    } else {
         return state;
     }
-
-}
+};
 
 export default product;

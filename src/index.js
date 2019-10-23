@@ -4,17 +4,18 @@ import "./index.css";
 import App1 from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import {Provider} from 'react-redux'
-import {ProductProvider} from "./context";
-import Products from './reducer/productsStore'
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { ProductProvider } from "./Data/data";
+import Products from "./reducer/productsStore";
 
-const store=createStore(Products)
+const store = createStore(Products, applyMiddleware(thunk));
 ReactDOM.render(
-  <Provider  store={store}>
+  <Provider store={store}>
     <Router>
       <App1 />
-    </Router>
+    </Router>{" "}
   </Provider>,
   document.getElementById("root")
 );

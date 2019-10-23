@@ -1,22 +1,22 @@
 export const deelete = (id) => {
-    return{
-        type:'DELETE'
-        ,payload:id
-        
-    } 
+    return {
+        type: 'DELETE',
+        payload: id
+
+    }
 }
 export const Deatils = (id) => {
-    return{
-        type:'DETAILS'
-        ,payload:id
-        
-    } 
+    return {
+        type: 'DETAILS',
+        payload: id
+
+    }
 }
 
 export const cart = (id) => {
-    return{
-        type:'CART'
-        ,payload:id
-        
-    } 
+    return {
+        type: 'CART',
+        payload: id
+
+    }
 }
