@@ -20,3 +20,10 @@ export const cart = (id) => {
 
     }
 }
+export const chkCart = (id) => {
+    return {
+        type: 'CHKCART',
+        payload: id
+
+    }
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ProductConsumer } from "../../contextAPi/context";
 import {connect} from 'react-redux'
-import { cart } from '../../action/action'
+import { cart,chkCart } from '../../action/action'
 import { ButtonContainer } from "../Button/Button";
 import { Link } from "react-router-dom";
  class Details extends Component {
@@ -64,16 +64,18 @@ import { Link } from "react-router-dom";
                     <Link to="/cart">
                       <ButtonContainer>Go to Cart</ButtonContainer>
                     </Link>
+                 
                     <ButtonContainer
                       cart
-                     
+                      p={this.props.inCart(product_id)}
+                      disabled={this.props.chk ? true : false}
                       onClick={() => {
-                      
-                        this.props.addToCart(product_id);
-                        
+                        this.props.addToCart(product_id);  
+                        this.props.inCart(product_id)                   
                       }}
                     >
-                    add To cart
+                   
+                    {this.props.chk ? "in cart" : "add to cart"}
                     </ButtonContainer>
                   </div>
                 </div>
@@ -87,11 +89,13 @@ import { Link } from "react-router-dom";
 const mapStateToProps =(state)=>{
   return{
     detailProduct: state.detailProduct,
+    chk:state.chk
   }
 }
 
 const mapDispatchToPros=(dispatch)=>{
   return {
+    inCart:(id)=>{dispatch(chkCart(id))},
     addToCart:(id)=>{dispatch(cart(id))}
   }
 }

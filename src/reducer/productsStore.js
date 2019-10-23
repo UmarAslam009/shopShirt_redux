@@ -39,6 +39,19 @@ const addToCart = (id, state) => {
     };
 };
 
+const chkCart= (id, state) => {
+    const obj = state.cart;
+    console.log("my obj",obj);
+    for (let i = 0; i < obj.length; i++) {
+        if (obj[i].product_id == id) {
+           
+            return true;
+        }
+    }
+    return false;
+   
+};
+
 const deleteFromCart = (id, state) => {
     const product = getItem(id,state);
     console.log(id,"newcart");
@@ -58,6 +71,11 @@ const product = (state = istate, action) => {
         const id = action.payload;
         console.log(id);
         return addToCart(id, state);
+    }
+    if (action.type == "CHKCART") {
+        const id = action.payload;
+        console.log(id);
+        return {...state,chk:chkCart(id, state)};
     }
     if (action.type == "DELETE") {
         const id = action.payload;
