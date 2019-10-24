@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Product from "./product";
 import { Products } from "../../action/actionfetch";
 import { connect } from "react-redux";
+import CatList from '../categories/catlist'
 import {
   Jumbotron,
   Container,
@@ -24,18 +25,13 @@ class ProductList extends Component {
   }
   card() {
     const element = (
-      <Card style={{ height: "30em" }}>
+      <Card style={{ height: "86em" }}>
         <Card.Body>
-          <Card.Header>
+          <Card.Header style={{backgroundColor:"Blue"}}>
             <h3> Filter Items </h3>
           </Card.Header>
-          <Card.Text>
-            <p>
-              Category: <b> Regional </b>
-            </p>
-            <p>
-              Department: <b> French </b>
-            </p>
+          <Card.Text> 
+          < CatList />
           </Card.Text>
         </Card.Body>
       </Card>

@@ -2,37 +2,32 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Deatils } from "../../action/action";
+import { updatesProducts } from "../../action/actionfetch";
 import { ProductConsumer } from "../../contextAPi/context";
-class Product extends Component {
+import { ButtonContainer } from "../Button/Button";
+
+class category extends Component {
+
   render() {
-    const { product_id, name, thumbnail, price } = this.props.products;
+    console.log(`${this.props.products.name} is selected: ${this.props.isProductSelected}`)
     return (
-      <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-        <div className="card">
-          {
-            <div
-              className="img-container p-5"
-              onClick={() => this.props.Details(product_id)}
+      <ProductWrapper className="col-3 col-md-3 col-lg-3 my-3 ">
+        <div
+          className="col-3 col-md-3 col-lg-3  "
+          onClick={() => {this.props.updatesProducts(this.props.products.category_id)
+            this.props.onClickHandle(this.props.products.category_id)}}
+        >
+          <Link to="/">
+            <ButtonContainer
+              cart
+              className="my-3"
+              style={{ width: 150 }}
+              className=" my-0"
+              isProductSelected = {this.props.isProductSelected}
             >
-              <Link to="/Details">
-                <img
-                  src={
-                    `https://raw.githubusercontent.com/zandoan/turing-fullstack/master/Images/product_images/` +
-                    thumbnail
-                  }
-                  alt=""
-                  className="card-img-top"
-                />
-              </Link>
-            </div>
-          }
-          <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0"> {name} </p>
-            <h5 className="text-blue font-italic mb-0">
-              <span className="mr-1"> $ </span> {price}
-            </h5>
-          </div>
+              {this.props.products.name}
+            </ButtonContainer>
+          </Link>
         </div>
       </ProductWrapper>
     );
@@ -41,15 +36,15 @@ class Product extends Component {
 
 const mapDispatchToPros = dispatch => {
   return {
-    Details: id => {
-      dispatch(Deatils(id));
+    updatesProducts: id => {
+      dispatch(updatesProducts(id));
     }
   };
 };
 export default connect(
   null,
   mapDispatchToPros
-)(Product);
+)(category);
 const ProductWrapper = styled.div`
   .card {
     border-color: transparent;

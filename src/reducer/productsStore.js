@@ -4,7 +4,8 @@ import { storeProducts, detailProduct } from "../Data/data";
 const istate = {
     productOfshop: [{}],
     detailProduct: {},
-    cart: []
+    cart: [],
+    category:[]
 };
 
 const getItem = (id, state) => {
@@ -20,7 +21,7 @@ const handleDetail = (id, state) => {
 
 const findindex = (id, state) => {
     const obj = state.productOfshop;
-    console.log("my obj",obj);
+    console.log("my obj", obj);
     for (let i = 0; i < obj.length; i++) {
         if (obj[i].product_id == id) {
             return i;
@@ -39,24 +40,24 @@ const addToCart = (id, state) => {
     };
 };
 
-const chkCart= (id, state) => {
+const chkCart = (id, state) => {
     const obj = state.cart;
-    console.log("my obj",obj);
+    console.log("my obj", obj);
     for (let i = 0; i < obj.length; i++) {
         if (obj[i].product_id == id) {
-           
+
             return true;
         }
     }
     return false;
-   
+
 };
 
 const deleteFromCart = (id, state) => {
-    const product = getItem(id,state);
-    console.log(id,"newcart");
+    const product = getItem(id, state);
+    console.log(id, "newcart");
     let products = state.productOfshop;
-    const index = findindex(id,state);
+    const index = findindex(id, state);
     const newCart = state.cart.filter(c => c.product_id != id);
     return {...state, cart: newCart };
 };
@@ -75,7 +76,7 @@ const product = (state = istate, action) => {
     if (action.type == "CHKCART") {
         const id = action.payload;
         console.log(id);
-        return {...state,chk:chkCart(id, state)};
+        return {...state, chk: chkCart(id, state) };
     }
     if (action.type == "DELETE") {
         const id = action.payload;
@@ -85,6 +86,11 @@ const product = (state = istate, action) => {
     if (action.type == "PRODUCTS") {
         const obj = action.payload;
         return {...state, productOfshop: obj.rows };
+    } 
+    if (action.type == "categories") {
+        const obj = action.payload;
+        return {...state, category: obj.rows };
+
     } else {
         return state;
     }
