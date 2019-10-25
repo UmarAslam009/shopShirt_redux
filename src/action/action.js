@@ -20,6 +20,14 @@ export const cart = (id) => {
 
     }
 }
+
+export const pricefilter = (data) => {
+    return {
+        type: 'FIlter',
+        payload: data
+
+    }
+}
 export const chkCart = (id) => {
     return {
         type: 'CHKCART',

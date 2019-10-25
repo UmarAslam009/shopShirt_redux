@@ -9,9 +9,9 @@ import { ButtonContainer } from "../Button/Button";
 class category extends Component {
 
   render() {
-    console.log(`${this.props.products.name} is selected: ${this.props.isProductSelected}`)
+   
     return (
-      <ProductWrapper className="col-3 col-md-3 col-lg-3 my-3 ">
+      <ProductWrapper className="col-3 col-md-3 col-lg-3 ">
         <div
           className="col-3 col-md-3 col-lg-3  "
           onClick={() => {this.props.updatesProducts(this.props.products.category_id)
@@ -19,10 +19,9 @@ class category extends Component {
         >
           <Link to="/">
             <ButtonContainer
-              cart
-              className="my-3"
+           
               style={{ width: 150 }}
-              className=" my-0"
+              className="my-1"
               isProductSelected = {this.props.isProductSelected}
             >
               {this.props.products.name}

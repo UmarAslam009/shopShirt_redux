@@ -19,7 +19,7 @@ export const ButtonContainer = styled.button `
 
   
   background: ${props =>
-    props.isProductSelected ? "yellow" : "transparent"}
+    props.isProductSelected ? "lightblue" : "transparent"}
   &:hover {
     background: var(--lightBlue);
     background: ${props =>

@@ -11,10 +11,12 @@ import {
   Image,
   Card
 } from "react-bootstrap";
+
 import { storeProducts } from '../../Data/data';
 import styled from "styled-components";
 import img from "../fotter/fotter.png";
 import { ProductConsumer } from "../../contextAPi/context";
+
 
 class CatList extends Component {
 
@@ -37,6 +39,7 @@ class CatList extends Component {
   render() {
     return (
       <React.Fragment>
+     
       {this.props.myname.map(products => {
         return (
           <Product products={products} key={products.product_id}
@@ -45,6 +48,7 @@ class CatList extends Component {
           />
         );
       })}
+      
       </React.Fragment>
     );
   }

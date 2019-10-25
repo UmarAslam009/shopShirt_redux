@@ -8,7 +8,7 @@ class Product extends Component {
   render() {
     const { product_id, name, thumbnail, price } = this.props.products;
     return (
-      <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
+      <ProductWrapper className="col-9 mx-auto col-md-9 col-lg-4 my-3">
         <div className="card">
           {
             <div

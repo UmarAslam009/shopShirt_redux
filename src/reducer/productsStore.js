@@ -3,9 +3,11 @@ import { storeProducts, detailProduct } from "../Data/data";
 
 const istate = {
     productOfshop: [{}],
+    Allpro:[{}],
+    productOfshop: [{}],
     detailProduct: {},
     cart: [],
-    category:[]
+    category: []
 };
 
 const getItem = (id, state) => {
@@ -85,8 +87,14 @@ const product = (state = istate, action) => {
     }
     if (action.type == "PRODUCTS") {
         const obj = action.payload;
-        return {...state, productOfshop: obj.rows };
-    } 
+        return {...state, productOfshop: obj.rows ,Allpro:obj.rows};
+    }
+
+    if (action.type == "FIlter") {
+        const obj = action.payload;
+        return {...state, productOfshop: obj };
+
+    }
     if (action.type == "categories") {
         const obj = action.payload;
         return {...state, category: obj.rows };
