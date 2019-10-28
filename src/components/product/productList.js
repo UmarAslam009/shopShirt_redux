@@ -29,24 +29,50 @@ import { storeProducts } from "../../Data/data";
 import styled from "styled-components";
 import img from "../fotter/fotter.png";
 import { ProductConsumer } from "../../contextAPi/context";
-
+let minRange = 0;
+let maxrange = 50;
+let searchMe = "";
 class ProductList extends Component {
   componentDidMount() {
-    this.props.Product();  
+    this.props.Product();
   }
+
   handleChange = e => {
-    const minRange = e[0];
-    const maxrange = e[1];
+    minRange = e[0];
+    maxrange = e[1];
     let newArr = [];
     this.props.Allpro.map(products => {
-      if (products.price > minRange && products.price <= maxrange) {
+      if (products.price >= minRange && products.price <= maxrange) {
         newArr = [...newArr, products];
       }
     });
-  
     this.props.pricefilter(newArr);
-    
-   
+  };
+
+  handleChangeinput = e => {
+    console.log("yes i am called", e.target.value);
+    searchMe = e.target.value;
+  };
+  updateWithkeyword = () => {
+    console.log(searchMe, "i am keyword");
+    let newArr = [];
+    this.props.Allpro.map(products => {
+      var n = products.name.search(searchMe);
+      console.log("search", n);
+      if (n != -1) {
+        newArr = [...newArr, products];
+      }
+    });
+
+    this.props.pricefilter(newArr);
+  };
+  reset = () => {
+    let newArr = [];
+    this.props.Allpro.map(products => {
+      newArr = [...newArr, products];
+    });
+
+    this.props.pricefilter(newArr);
   };
 
   card2() {
@@ -209,14 +235,13 @@ class ProductList extends Component {
                           <div className={classes.sliderContainer}>
                             <Slider
                               color="#f62f5e"
-                              defaultValue={[1, 21]}
+                              defaultValue={[1, 50]}
                               min={1}
-                              max={21}
+                              max={50}
                               range
                               filerwithPice
                               onChange={this.handleChange}
                             />
-                         
                           </div>
                           <div
                             style={{
@@ -226,9 +251,13 @@ class ProductList extends Component {
                               height: "24px"
                             }}
                           >
-                            <div className={classes.rangesText}>{`£ 1`}</div>
+                            <div className={classes.rangesText}>
+                              {`£ ` + minRange}
+                            </div>
                             <div style={{ flexGrow: 1 }} />
-                            <div className={classes.rangesText}>{`£ 21`}</div>
+                            <div className={classes.rangesText}>
+                              {`£ ` + maxrange}
+                            </div>
                           </div>
                         </div>
                         <div className={classes.searchBlock}>
@@ -246,6 +275,7 @@ class ProductList extends Component {
                               margin="dense"
                               variant="outlined"
                               name="search"
+                              onChange={this.handleChangeinput}
                             />
                           </div>
                         </div>
@@ -257,7 +287,10 @@ class ProductList extends Component {
                           className={classes.coloredButton}
                           style={{ borderRadius: 24, height: 35, width: 90 }}
                         >
-                          <span className={classes.submitButtonText}>
+                          <span
+                            className={classes.submitButtonText}
+                            onClick={this.updateWithkeyword}
+                          >
                             Apply
                           </span>
                         </Fab>
@@ -268,7 +301,10 @@ class ProductList extends Component {
                           className={classes.coloredButton}
                           style={{ borderRadius: 24, height: 35, width: 90 }}
                         >
-                          <span className={classes.submitButtonText}>
+                          <span
+                            className={classes.submitButtonText}
+                            onClick={this.reset}
+                          >
                             Reset
                           </span>
                         </Fab>
@@ -342,7 +378,7 @@ class ProductList extends Component {
 const mapStateToProps = state => {
   return {
     myname: state.productOfshop,
-    Allpro:state.Allpro
+    Allpro: state.Allpro
   };
 };
 const mapDispatchToPros = dispatch => {
