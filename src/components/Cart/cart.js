@@ -299,19 +299,18 @@ import {
           <div className="container">
             <Row className="text-center">
               <Col className="my-3" xs={3} md={3} >
-                {this.card()}{this.card2()}
+               {this.card2()}
               </Col>
               <Col xs={9} md={9}>
                 <Row>
                      {
                        this.props.cart.map(products => {
-
-                        return <div className="my-3 col-12">
-                                
-                          <a href="#" class="text-cenetr list-group-item list-group-item-action active">{<b>Name:</b>}{products.name}<button onClick={() =>  this.props.deleteFromCart(products.product_id)} className="btn btn-warning  float-right">Delete From Cart</button></a>
-                          <a href="#" class="list-group-item list-group-item-action">{<b>ID:</b>}{products.product_id}</a>
-                          <a href="#" class="list-group-item list-group-item-action">{<b>Price:</b>}{products.price}{<b>$</b>}</a>
-                          <a href="#" class="list-group-item list-group-item-action ">{<b>After Discount:</b>}{products.discounted_price}{<b>$</b>}</a>
+                        return <div  className="my-3 col-12 ">
+                           {console.log(products.product_id,"pro")}     
+                          <a href="#" class=" text-cenetr list-group-item list-group-item-action active">{<b>Name:</b>}{products.name}<button onClick={() =>  this.props.deleteFromCart(products.product_id)} className="btn btn-warning  float-right">Delete From Cart</button></a>
+                          <a href="#" class="text-dark list-group-item list-group-item-action">{<b>ID:</b>}{"11"+products.product_id}</a>
+                          <a href="#" class="text-dark list-group-item list-group-item-action">{<b>Price:</b>}{products.price}{<b>$</b>}</a>
+                          <a href="#" class="text-dark list-group-item list-group-item-action ">{<b>After Discount:</b>}{products.discounted_price}{<b>$</b>}</a>
                         </div>
                       })
                       
