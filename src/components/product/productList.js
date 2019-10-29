@@ -78,17 +78,17 @@ class ProductList extends Component {
 
   card2() {
     const element = (
-      <Card style={{ height: "" }}>
+      <Card className="p-1">
         <Card.Body>
           <Card.Text>
-            <div className={classes.root}>
+            <div className={classes.root} >
               <Container>
                 <div className="flex mb-4 contentHolder">
                   <div className="w-1/4 filterSection">
                     <Paper className={classes.controlContainer} elevation={1}>
                       <div className={classes.filterBodyContainer}>
                         <div className={classes.colorBlock}>
-                          <div className={classes.titleContainer}>
+                          <div className="py-3">
                             <span className={classes.controlsTitle}>Color</span>
                           </div>
                           <div className={classes.colorRadiosContainer}>
@@ -150,7 +150,7 @@ class ProductList extends Component {
                             />
                           </div>
                         </div>
-                        <div className={classes.sizesBlock}>
+                        <div className="py-3">
                           <div className={classes.titleContainer}>
                             <span className={classes.controlsTitle}>Size</span>
                           </div>
@@ -227,13 +227,13 @@ class ProductList extends Component {
                             />
                           </div>
                         </div>
-                        <div className={classes.sliderBlock}>
+                        <div className="py-3">
                           <div className={classes.titleContainer}>
                             <span className={classes.controlsTitle}>
                               Price Range
                             </span>
                           </div>
-                          <div className={classes.sliderContainer}>
+                          <div className="pl-2 pr-2">
                             <Slider
                               color="#f62f5e"
                               defaultValue={[1, 50]}
@@ -252,16 +252,16 @@ class ProductList extends Component {
                               height: "24px"
                             }}
                           >
-                            <div className={classes.rangesText}>
+                            <div className="pl-2">
                               {`£ ` + minRange}
                             </div>
                             <div style={{ flexGrow: 1 }} />
-                            <div className={classes.rangesText}>
+                            <div className="pr-2">
                               {`£ ` + maxrange}
                             </div>
                           </div>
                         </div>
-                        <div className={classes.searchBlock}>
+                        <div className="py-3">
                           <div className={classes.titleContainer}>
                             <span className={classes.controlsTitle}>
                               Search keyword
@@ -273,7 +273,7 @@ class ProductList extends Component {
                                 className: classes.filterSearchInput
                               }}
                               placeholder="Enter a keyword to search..."
-                              margin="dense"
+                              className="pl-2 pr-2"
                               variant="outlined"
                               name="search"
                               onChange={this.handleChangeinput}
@@ -281,7 +281,7 @@ class ProductList extends Component {
                           </div>
                         </div>
                       </div>
-                      <div className={classes.footerBlock}>
+                      <div className="py-3">
                         <Fab
                           color="primary"
                           size="small"
@@ -289,18 +289,20 @@ class ProductList extends Component {
                           style={{ borderRadius: 24, height: 35, width: 90 }}
                         >
                           <span
+                           
                             className={classes.submitButtonText}
                             onClick={this.updateWithkeyword}
                           >
                             Apply
                           </span>
                         </Fab>
-
+                       <div className="py-3">
                         <Fab
                           color="primary"
                           size="small"
                           className={classes.coloredButton}
                           style={{ borderRadius: 24, height: 35, width: 90 }}
+                          
                         >
                           <span
                             className={classes.submitButtonText}
@@ -309,6 +311,7 @@ class ProductList extends Component {
                             Reset
                           </span>
                         </Fab>
+                        </div>
                       </div>
                     </Paper>
                   </div>
