@@ -7,6 +7,7 @@ import CatList from "../categories/catlist";
 import { Slider } from "material-ui-slider";
 import Close from "@material-ui/icons/Close";
 import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
+import Header from "../header/header"
 import classes from "./styles";
 import {
   withStyles,
@@ -333,7 +334,7 @@ class ProductList extends Component {
             <h3> Filter Items </h3>
           </Card.Header>
           <Card.Text>
-            <CatList />
+            {/*<CatList />*/}
           </Card.Text>
         </Card.Body>
       </Card>
@@ -343,7 +344,8 @@ class ProductList extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="py-5">
+       <Header/>
+        <div className="py-3">
           <div className="container">
             <Row className="text-center">
               <Col className="my-3" xs={3} md={3}>
@@ -396,3 +398,4 @@ export default connect(
   mapDispatchToPros
 )(ProductList);
 const ProductWrapper = styled.section``;
+

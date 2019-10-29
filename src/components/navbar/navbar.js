@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ButtonContainer } from "../Button/Button";
+
 export default class Navbar extends Component {
   render() {
     return (
+      <React.Fragment>
       <Nav className="navbar navbar-expand-sm  navbar-dark px-sm-5">
         <Link to="/">
           <div class="navbar-header">
             <a class="text-danger navbar-brand" href="#">
-              <b>S H O P M A T E</b>
+              <b><h4>S H O P M A T E</h4></b>
             </a>
           </div>
         </Link>
@@ -45,9 +47,15 @@ export default class Navbar extends Component {
           </ButtonContainer>
         </Link>
       </Nav>
+
+      </React.Fragment>
+  
+      
     );
+    
   }
 }
+
 const Nav = styled.nav`
   background: var(--mainDark);
   .nav-link {
