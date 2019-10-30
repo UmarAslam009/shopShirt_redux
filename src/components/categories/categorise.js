@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { updatesProducts } from "../../action/actionfetch";
+import { saveCatName } from "../../action/action";
+
 import { ProductConsumer } from "../../contextAPi/context";
 import { ButtonContainer } from "../Button/Button";
 
@@ -15,8 +17,9 @@ class category extends Component {
       <ProductWrapper className="col-3 col-md-3 col-lg-3 ">
         <div
           className="col-3 col-md-3 col-lg-3  "
-          onClick={() => {this.props.updatesProducts(this.props.products.category_id)
-            this.props.onClickHandle(this.props.products.category_id)}}
+          onClick={() => {this.props.updatesProducts(this.props.products.category_id);
+            this.props.saveCatName(this.props.products.name);
+            this.props.onClickHandle(this.props.products.category_id);}}
         >
           <Link to="/" >
             {/*<ButtonContainer
@@ -38,6 +41,9 @@ const mapDispatchToPros = dispatch => {
   return {
     updatesProducts: id => {
       dispatch(updatesProducts(id));
+    },
+    saveCatName: name => {
+      dispatch(saveCatName(name));
     }
   };
 };

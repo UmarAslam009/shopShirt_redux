@@ -3,7 +3,7 @@ import { storeProducts, detailProduct } from "../Data/data";
 
 const istate = {
     productOfshop: [{}],
-    Allpro:[{}],
+    Allpro: [{}],
     productOfshop: [{}],
     detailProduct: {},
     cart: [],
@@ -87,12 +87,17 @@ const product = (state = istate, action) => {
     }
     if (action.type == "PRODUCTS") {
         const obj = action.payload;
-        return {...state, productOfshop: obj.rows ,Allpro:obj.rows};
+        return {...state, productOfshop: obj.rows, Allpro: obj.rows };
     }
 
     if (action.type == "FIlter") {
         const obj = action.payload;
         return {...state, productOfshop: obj };
+
+    }
+    if (action.type == "save") {
+        const name = action.payload;
+        return {...state, CatName: name };
 
     }
     if (action.type == "categories") {

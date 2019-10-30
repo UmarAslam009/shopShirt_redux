@@ -13,6 +13,14 @@ export const Deatils = (id) => {
     }
 }
 
+export const saveCatName = (id) => {
+    return {
+        type: 'save',
+        payload: id
+
+    }
+}
+
 export const cart = (id) => {
     return {
         type: 'CART',

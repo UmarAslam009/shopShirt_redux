@@ -7,7 +7,7 @@ import CatList from "../categories/catlist";
 import { Slider } from "material-ui-slider";
 import Close from "@material-ui/icons/Close";
 import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
-import Header from "../header/header"
+import Header from "../header/header";
 import classes from "./styles";
 import {
   withStyles,
@@ -78,10 +78,10 @@ class ProductList extends Component {
 
   card2() {
     const element = (
-      <Card className="p-1">
+      <Card className="pl-0">
         <Card.Body>
           <Card.Text>
-            <div className={classes.root} >
+            <div className={classes.root}>
               <Container>
                 <div className="flex mb-4 contentHolder">
                   <div className="w-1/4 filterSection">
@@ -156,7 +156,8 @@ class ProductList extends Component {
                           </div>
                           <div className={classes.sizeCheckboxes}>
                             <Checkbox
-                              style={{ padding: 5 }}
+                            className=" m-2 btn btn-black"
+                            style={{ padding: 5 ,width:"30px"}}
                               checkedIcon={
                                 <div className={classes.sizeCheckboxChecked}>
                                   XS
@@ -170,7 +171,8 @@ class ProductList extends Component {
                               value="XS"
                             />
                             <Checkbox
-                              style={{ padding: 5 }}
+                            className=" m-2 btn btn-black"
+                            style={{ padding: 5 ,width:"30px"}}
                               checkedIcon={
                                 <div className={classes.sizeCheckboxChecked}>
                                   S
@@ -184,7 +186,8 @@ class ProductList extends Component {
                               value="checkedA"
                             />
                             <Checkbox
-                              style={{ padding: 5 }}
+                            className=" m-2 btn btn-black"
+                            style={{ padding: 5 ,width:"30px"}}
                               checkedIcon={
                                 <div className={classes.sizeCheckboxChecked}>
                                   M
@@ -198,7 +201,8 @@ class ProductList extends Component {
                               value="M"
                             />
                             <Checkbox
-                              style={{ padding: 5 }}
+                            className="m-2 btn btn-black"
+                            style={{ padding: 5 ,width:"30px"}}
                               checkedIcon={
                                 <div className={classes.sizeCheckboxChecked}>
                                   L
@@ -212,7 +216,8 @@ class ProductList extends Component {
                               value="L"
                             />
                             <Checkbox
-                              style={{ padding: 5 }}
+                            className=" m-2 btn btn-black"
+                            style={{ padding: 5 ,width:"30px"}}
                               checkedIcon={
                                 <div className={classes.sizeCheckboxChecked}>
                                   XL
@@ -224,6 +229,21 @@ class ProductList extends Component {
                                 </div>
                               }
                               value="XL"
+                            />
+                            <Checkbox
+                            className=" m-2 btn btn-black"
+                            style={{ padding: 5 ,width:"30px"}}
+                              checkedIcon={
+                                <div className={classes.sizeCheckboxChecked}>
+                                  XL
+                                </div>
+                              }
+                              icon={
+                                <div className={classes.sizeCheckboxUnchecked}>
+                                  XL
+                                </div>
+                              }
+                              value="ML"
                             />
                           </div>
                         </div>
@@ -252,13 +272,9 @@ class ProductList extends Component {
                               height: "24px"
                             }}
                           >
-                            <div className="pl-2">
-                              {`£ ` + minRange}
-                            </div>
+                            <div className="pl-2">{`£ ` + minRange}</div>
                             <div style={{ flexGrow: 1 }} />
-                            <div className="pr-2">
-                              {`£ ` + maxrange}
-                            </div>
+                            <div className="pr-2">{`£ ` + maxrange}</div>
                           </div>
                         </div>
                         <div className="py-3">
@@ -272,7 +288,7 @@ class ProductList extends Component {
                               inputProps={{
                                 className: classes.filterSearchInput
                               }}
-                              placeholder="Enter a keyword to search..."
+                              placeholder="keyword to search"
                               className="pl-2 pr-2"
                               variant="outlined"
                               name="search"
@@ -289,28 +305,26 @@ class ProductList extends Component {
                           style={{ borderRadius: 24, height: 35, width: 90 }}
                         >
                           <span
-                           
                             className={classes.submitButtonText}
                             onClick={this.updateWithkeyword}
                           >
                             Apply
                           </span>
                         </Fab>
-                       <div className="py-3">
-                        <Fab
-                          color="primary"
-                          size="small"
-                          className={classes.coloredButton}
-                          style={{ borderRadius: 24, height: 35, width: 90 }}
-                          
-                        >
-                          <span
-                            className={classes.submitButtonText}
-                            onClick={this.reset}
+                        <div className="py-3">
+                          <Fab
+                            color="primary"
+                            size="small"
+                            className={classes.coloredButton}
+                            style={{ borderRadius: 24, height: 35, width: 90 }}
                           >
-                            Reset
-                          </span>
-                        </Fab>
+                            <span
+                              className={classes.submitButtonText}
+                              onClick={this.reset}
+                            >
+                              Reset
+                            </span>
+                          </Fab>
                         </div>
                       </div>
                     </Paper>
@@ -330,15 +344,23 @@ class ProductList extends Component {
         <Card.Body>
           <Card.Header
             style={{
-              backgroundColor: "var(--lightBlue)",
-              borderRadius: "15px  30px"
+              backgroundColor: "black",
+              borderRadius: "15px",
+              color:"white"
             }}
           >
             <h3> Filter Items </h3>
+            
           </Card.Header>
           <Card.Text>
-            {/*<CatList />*/}
-          </Card.Text>
+          <h5><b class="col-1">Categorey</b></h5>
+          {this.props.name  &&
+            <h2>
+            <h5 className="btn btn-secondary" style={{width:"100%"}}>{this.props.name}</h5>
+            </h2>
+          }
+          
+          {/*<CatList />*/}</Card.Text>
         </Card.Body>
       </Card>
     );
@@ -347,7 +369,7 @@ class ProductList extends Component {
   render() {
     return (
       <React.Fragment>
-       <Header/>
+        <Header />
         <div className="py-3">
           <div className="container">
             <Row className="text-center">
@@ -383,7 +405,8 @@ class ProductList extends Component {
 const mapStateToProps = state => {
   return {
     myname: state.productOfshop,
-    Allpro: state.Allpro
+    Allpro: state.Allpro,
+    name:state.CatName
   };
 };
 const mapDispatchToPros = dispatch => {
@@ -401,4 +424,3 @@ export default connect(
   mapDispatchToPros
 )(ProductList);
 const ProductWrapper = styled.section``;
-

@@ -16,8 +16,6 @@ export const ButtonContainer = styled.button `
   display: inline-block;
   margin: 0.2rem 0.5rem 0.2rem 0;
   transition: all 0.5s ease-in-out;
-
-  
   background: ${props =>
     props.isProductSelected ? "lightblue" : "transparent"}
   &:hover {
