@@ -2,15 +2,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ButtonContainer } from "../Button/Button";
-
+import Popup from "reactjs-popup";
+import Cart from "../Cart/cart"
+import CatList from "../categories/catlist";
+import Header from "../header/header";
+import  './style.css';
 export default class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
+      
       <Nav className="navbar navbar-expand-sm  navbar-dark px-sm-5">
+      
         <Link to="/">
-          <div class="navbar-header">
-            <a class="text-danger navbar-brand" href="#">
+          <div className="navbar-header">
+            <a className="text-danger navbar-brand" href="#">
               <b><h4>S H O P M A T E</h4></b>
             </a>
           </div>
@@ -39,13 +45,15 @@ export default class Navbar extends Component {
             </Link>
           </li>
         </ul>
-        <Link to="/cart" className="ml-auto">
-          <ButtonContainer>
+          <div  className="ml-auto">    
+          <Popup class="popup-content"  trigger={<ButtonContainer>
             <span className="mr-2">
               <i className="fas fa-cart-plus " />
             </span>
-          </ButtonContainer>
-        </Link>
+          </ButtonContainer>} >
+            <div><Cart/></div>
+          </Popup>
+            </div>   
       </Nav>
 
       </React.Fragment>

@@ -12,6 +12,22 @@ export const Deatils = (id) => {
 
     }
 }
+export const pulsNUM = (id) => {
+    return {
+        type: 'plus',
+        payload: id
+
+    }
+}
+export const NegNUM = (id) => {
+    return {
+        type: 'minus',
+        payload: id
+
+    }
+}
+
+
 
 export const saveCatName = (id) => {
     return {

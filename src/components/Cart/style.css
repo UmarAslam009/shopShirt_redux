@@ -1,0 +1,28 @@
+.my_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+   border-radius: 25px;
+    overflow: hidden;
+    background-color: rgb(179, 177, 177);
+  }
+  
+  li {
+    float: left;
+  }
+  img{
+      display: inline-bl !important
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: rgb(241, 227, 227);
+  }

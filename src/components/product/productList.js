@@ -9,6 +9,7 @@ import Close from "@material-ui/icons/Close";
 import FiberManualRecord from "@material-ui/icons/FiberManualRecord";
 import Header from "../header/header";
 import classes from "./styles";
+import Popup from "reactjs-popup";
 import {
   withStyles,
   Paper,
@@ -64,7 +65,6 @@ class ProductList extends Component {
         newArr = [...newArr, products];
       }
     });
-
     this.props.pricefilter(newArr);
   };
   reset = () => {
@@ -370,6 +370,7 @@ class ProductList extends Component {
     return (
       <React.Fragment>
         <Header />
+      
         <div className="py-3">
           <div className="container">
             <Row className="text-center">

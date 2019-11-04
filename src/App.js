@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import ProductList from "./components/product/productList";
@@ -16,15 +16,15 @@ class App extends Component {
       <React.Fragment>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={ProductList} />{" "}
-          <Route exact path="/details" component={Details} />{" "}
-          <Route exact path="/cart" component={Cart} />{" "}
+          <Route exact path="/" component={ProductList} />
+          <Route exact path="/details" component={Details} />
+          <Route exact path="/cart" component={Cart} />
           <Route exact path="/ct" component={category} />
           <Route exact path="/Nature" component={Nature} />
           <Route exact path="/Seasonal" component={Seasonal} />
           
-          <Route component={Default} />{" "}
-        </Switch>{" "}
+          <Route component={Default} />
+        </Switch>
       </React.Fragment>
     );
   }

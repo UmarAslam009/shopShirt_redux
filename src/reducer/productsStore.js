@@ -7,7 +7,16 @@ const istate = {
     productOfshop: [{}],
     detailProduct: {},
     cart: [],
-    category: []
+    category: [],
+};
+const findindexCart = (id, state) => {
+    const obj = state.cart;
+    console.log("my obj", obj);
+    for (let i = 0; i < obj.length; i++) {
+        if (obj[i].product_id == id) {
+            return i;
+        }
+    }
 };
 
 const getItem = (id, state) => {
@@ -15,6 +24,20 @@ const getItem = (id, state) => {
     const product = state.productOfshop.find(item => item.product_id == id);
     return product;
 };
+const updatesateonpuls =(id, state) =>{
+    const index = findindexCart(id, state);
+    console.log("myindexxxxx",index)
+    state.cart[index].count=state.cart[index].count+1;
+      return {...state,count:state.cart[index].count };
+   
+  }
+const updatestateonmiuns=(id, state)=> {
+
+    const index = findindexCart(id, state);
+    state.cart[index].count=state.cart[index].count-1;
+      return {...state,count:state.cart[index].count };
+   
+  }
 
 const handleDetail = (id, state) => {
     const product = getItem(id, state);
@@ -31,14 +54,16 @@ const findindex = (id, state) => {
     }
 };
 const addToCart = (id, state) => {
-    const product = getItem(id, state);
+    const count=0;
+    const product =  { ...getItem(id, state), count };
     let tempProduct = state.productOfshop;
     let tempdProduct = state.detailProduct;
     const index = findindex(id, state);
     console.log(index);
     return {
         ...state,
-        cart: [...state.cart, product]
+        cart: [...state.cart, product],
+        
     };
 };
 
@@ -98,6 +123,18 @@ const product = (state = istate, action) => {
     if (action.type == "save") {
         const name = action.payload;
         return {...state, CatName: name };
+
+    }
+    if (action.type == "plus") {
+        const id = action.payload;
+        console.log("mra coount",state);
+        return updatesateonpuls(id,state)
+        
+
+    }
+    if (action.type == "minus") {
+        const id = action.payload;
+        return updatestateonmiuns(id,state)
 
     }
     if (action.type == "categories") {
